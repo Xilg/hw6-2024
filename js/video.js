@@ -19,18 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     slowerButton.addEventListener('click', function () {
-        video.playbackRate = video.playbackRate * 0.8;
+        video.playbackRate -= 0.1;
 		console.log("Speed is " + video.playbackRate);
     });
 
     fasterButton.addEventListener('click', function () {
-        video.playbackRate = video.playbackRate * 1.25;
+        video.playbackRate += 0.1;
 		console.log("Speed is " + video.playbackRate);
     });
 
     skipButton.addEventListener('click', function () {
-        	// skip 60 seconds
-		video.currentTime = video.currentTime + 60;
+        	// skip 10 seconds
+		video.currentTime = video.currentTime + 10;
 		if (video.ended) {
 			// reset playback
 			video.load();
@@ -49,10 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
     muteButton.addEventListener('click', function () {
 		if (video.muted) {
 			video.muted = false;
+			document.getElementById('mute').innerText = "Mute";
 			console.log("Unmuted");
 		}
 		else {
 			video.muted = true;
+			document.getElementById('mute').innerText = "Unmute";
 			console.log("Muted");
 		}
     });
