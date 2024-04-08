@@ -36,16 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     muteButton.addEventListener('click', function () {
-        if (video.volume === 0) {
-            video.volume = volumeSlider.value / 100;
-            volumeSlider.value = video.volume * 100;
-            muteButton.textContent = "Mute";
-        } else {
-            video.volume = 0;
-            volumeSlider.value = 0;
-            muteButton.textContent = "Unmute";
-        }
-        document.getElementById('volume').innerText = volumeSlider.value + "%";
+		if (video.muted) {
+			video.muted = false;
+			console.log("Unmuted");
+		}
+		else {
+			video.muted = true;
+			console.log("Muted");
+		}
     });
 
 	vintageButton.addEventListener('click', function () {
