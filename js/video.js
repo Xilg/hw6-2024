@@ -19,15 +19,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     slowerButton.addEventListener('click', function () {
-        video.playbackRate -= 0.25; // Slow down playback rate by 0.25
+        video.playbackRate = video.playbackRate * 0.8;
+		console.log("Speed is " + video.playbackRate);
     });
 
     fasterButton.addEventListener('click', function () {
-        video.playbackRate += 0.25; // Speed up playback rate by 0.25
+        video.playbackRate = video.playbackRate * 1.25;
+		console.log("Speed is " + video.playbackRate);
     });
 
     skipButton.addEventListener('click', function () {
-        video.currentTime += 10; // Skip ahead 10 seconds
+        	// skip 60 seconds
+		video.currentTime = video.currentTime + 60;
+		if (video.ended) {
+			// reset playback
+			video.load();
+			video.play();
+			// reset speed
+			playbackRate = 1;
+		}
+		console.log("Current location is " + video.currentTime);
     });
 
     volumeSlider.addEventListener('input', function () {
